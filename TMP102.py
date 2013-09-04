@@ -18,7 +18,7 @@ class TMP102():
     def getTemp(self):
         rd = self.i2c.readList(self.TMP102_ADDRESS,2)
         print 'raw reading is ', rd
-        result = (rd[0]<<8)|rd[1]
+        result = ((rd[0]<<8)|rd[1])>>4
         print result
         # rd = rd >> 4
         # print 'rd is ', rd

@@ -5,7 +5,7 @@ from Adafruit_I2C import Adafruit_I2C
 import time
 
 class TMP102():
-    TMP102_ADDRESS = 0x48 # b1001000 addr pin pulled low
+    TMP102_ADDRESS = 0x93 #0x48 # b1001000 addr pin pulled low
     # TMP102_ADDRESS = 0x49 # b1001001 addr pin pulled high
     # TMP102_ADDRESS = 0x4A b1001010 addr pin tied to SDA
     # TMP102_ADDRESS = 0x4B b1001011 addr pin tied to SCL

@@ -9,7 +9,7 @@ class TMP102():
     # TMP102_ADDRESS = 0x49 # b1001001 addr pin pulled high
     # TMP102_ADDRESS = 0x4A b1001010 addr pin tied to SDA
     # TMP102_ADDRESS = 0x4B b1001011 addr pin tied to SCL
-    TMP102_WRITE_TO_POINTER = 0x92
+    TMP102_WRITE_TO_POINTER = 0x92 # this is (TMP102_ADDRESS << 1)
     TMP102_READ_FROM_TEMP = 0x00
     def __init__(self, *args, **kwargs):
         self.i2c = Adafruit_I2C(self.TMP102_ADDRESS)
@@ -27,7 +27,7 @@ class TMP102():
         # lsb = self.i2c.readU8(self.TMP102_ADDRESS)
         # print 'lsb is ',lsb
         # result = 0.0625*(((msb << 8 ) | lsb) >> 4)
-        result = msb/16.0
+        result = msb*0.0625
         return result
         # uh, this might be wrong. Might need to 
         # read hi and lo bytes separately to see

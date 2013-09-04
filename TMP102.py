@@ -17,9 +17,9 @@ class TMP102():
 
     def getTemp(self):
         rd = self.i2c.readU16(self.TMP102_ADDRESS)
-        print 'raw reading is ',rd
+        # print 'raw reading is ',rd
         rd = rd >> 4
-        print 'rd is ', rd
+        # print 'rd is ', rd
         if (rd & (1<<11)):
         	rd |= 0xF800
         	print 'the twos complement thing happened', rd

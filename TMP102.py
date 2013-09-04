@@ -18,12 +18,12 @@ class TMP102():
     def getTemp(self):
         rd = self.i2c.readList(self.TMP102_ADDRESS,2)
         print 'raw reading is ', rd
+        result = (rd[0]<<8)|rd[1]
+        print result
         # rd = rd >> 4
         # print 'rd is ', rd
         # if (rd & (1<<11)):
         	# rd |= 0xF800
         	# print 'the twos complement thing happened', rd
         # result = rd*0.0625
-
-        result = rd[0]
         return result

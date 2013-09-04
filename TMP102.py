@@ -5,10 +5,15 @@ from Adafruit_I2C import Adafruit_I2C
 import time
 
 class TMP102():
-	TMP102_ADDRESS = 0x36
-
+	TMP102_ADDRESS = 0x48 # b1001000 addr pin pulled low
+	# TMP102_ADDRESS = 0x49 # b1001001 addr pin pulled high
+	# TMP102_ADDRESS = 0x4A b1001010 tie to SDA
+	# TMP102_ADDRESS = 0x4B b1001011 tie to SCL
 	def __init__(self, *args, **kwargs):
 		self.i2c = Adafruit_I2C(self.TMP102_ADDRESS)
 
 	def getTemp(self):
 		return self.i2c.read16U(self.TMP102_ADDRESS)
+		# uh, this might be wrong. Might need to 
+		# read hi and lo bytes separately to see
+		# if we're doing two's complement

@@ -16,7 +16,7 @@ class TMP102():
         # self.i2c.write8(self.TMP102_WRITE_TO_POINTER, self.TMP102_READ_FROM_TEMP)
 
     def getTemp(self):
-        rd = self.i2c.readU16(self.TMP102_ADDRESS)
+        rd = self.i2c.readU16Rev(self.TMP102_ADDRESS)
         print 'raw reading is ',bin(rd)
         rd = rd >> 4
         # print 'rd is ', rd

@@ -16,14 +16,14 @@ class TMP102():
         # self.i2c.write8(self.TMP102_WRITE_TO_POINTER, self.TMP102_READ_FROM_TEMP)
 
     def getTemp(self):
+    	# note, if you try to use readU16, you get
+    	# semi-accurate results that always end in 0.375?!
         rd = self.i2c.readList(self.TMP102_ADDRESS,2)
-        print 'raw reading is ', rd
+        # print 'raw reading is ', rd
         result = ((rd[0]<<8)|rd[1])>>4
-        print result/16.0
-        # rd = rd >> 4
-        # print 'rd is ', rd
+        # print result/16.0
         # if (rd & (1<<11)):
         	# rd |= 0xF800
         	# print 'the twos complement thing happened', rd
-        # result = rd*0.0625
+        result *= 0.0625 # conversion factor: 0.0625deg C per count
         return result

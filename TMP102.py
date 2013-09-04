@@ -13,21 +13,17 @@ class TMP102():
     TMP102_READ_FROM_TEMP = 0x00
     def __init__(self, *args, **kwargs):
         self.i2c = Adafruit_I2C(self.TMP102_ADDRESS)
-        # self.i2c.write8(self.TMP102_WRITE_TO_POINTER, self.TMP102_READ_FROM_TEMP)
-        # self.i2c.write8(self.TMP102_READ_FROM_TEMP)
+        self.i2c.write8(self.TMP102_WRITE_TO_POINTER, self.TMP102_READ_FROM_TEMP)
 
     def getTemp(self):
-        msb = self.i2c.readU16(self.TMP102_ADDRESS)
-        print 'raw reading is ',msb
-        msb = msb >> 4
-        print 'msb is ', msb
-        if (msb & (1<<11)):
-        	msb |= 0xF800
-        	print 'the twos complement thing happened', msb
-        # lsb = self.i2c.readU8(self.TMP102_ADDRESS)
-        # print 'lsb is ',lsb
-        # result = 0.0625*(((msb << 8 ) | lsb) >> 4)
-        result = msb*0.0625
+        rd = self.i2c.readU16(0x91)
+        print 'raw reading is ',rd
+        rd = rd >> 4
+        print 'rd is ', rd
+        if (rd & (1<<11)):
+        	rd |= 0xF800
+        	print 'the twos complement thing happened', rd
+        result = rd*0.0625
         return result
         # uh, this might be wrong. Might need to 
         # read hi and lo bytes separately to see

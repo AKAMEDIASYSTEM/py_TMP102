@@ -13,7 +13,7 @@ class TMP102():
         self.i2c = Adafruit_I2C(self.TMP102_ADDRESS)
 
     def getTemp(self):
-        msb = self.i2c.readU16(self.TMP102_ADDRESS)
+        msb = self.i2c.readU16(0x91)
         print 'msb is ',msb
         msb = msb >> 4
         # lsb = self.i2c.readU8(self.TMP102_ADDRESS)

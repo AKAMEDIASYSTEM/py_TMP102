@@ -19,7 +19,7 @@ class TMP102():
         rd = self.i2c.readList(self.TMP102_ADDRESS,2)
         print 'raw reading is ', rd
         result = ((rd[0]<<8)|rd[1])>>4
-        print result
+        print result/16.0
         # rd = rd >> 4
         # print 'rd is ', rd
         # if (rd & (1<<11)):

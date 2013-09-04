@@ -13,8 +13,8 @@ class TMP102():
     TMP102_READ_FROM_TEMP = 0x00
     def __init__(self, *args, **kwargs):
         self.i2c = Adafruit_I2C(self.TMP102_ADDRESS)
-        self.i2c.write8(self.TMP102_WRITE_TO_POINTER)
-        self.i2c.write8(self.TMP102_READ_FROM_TEMP)
+        self.i2c.write8(self.TMP102_WRITE_TO_POINTER, self.TMP102_READ_FROM_TEMP)
+        # self.i2c.write8(self.TMP102_READ_FROM_TEMP)
 
     def getTemp(self):
         msb = self.i2c.readU16(self.TMP102_ADDRESS)

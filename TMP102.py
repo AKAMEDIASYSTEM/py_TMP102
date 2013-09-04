@@ -20,6 +20,10 @@ class TMP102():
         msb = self.i2c.readU16(self.TMP102_ADDRESS)
         print 'msb is ',msb
         msb = msb >> 4
+
+        if (msb & (1<<11)):
+        	msb &= 0xF800
+        	print 'the twos complement thing happened', msb
         # lsb = self.i2c.readU8(self.TMP102_ADDRESS)
         # print 'lsb is ',lsb
         # result = 0.0625*(((msb << 8 ) | lsb) >> 4)

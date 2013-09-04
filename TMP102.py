@@ -13,7 +13,7 @@ class TMP102():
 		self.i2c = Adafruit_I2C(self.TMP102_ADDRESS)
 
 	def getTemp(self):
-		return self.i2c.read16U(self.TMP102_ADDRESS)
+		return self.i2c.readU16(self.TMP102_ADDRESS)
 		# uh, this might be wrong. Might need to 
 		# read hi and lo bytes separately to see
 		# if we're doing two's complement

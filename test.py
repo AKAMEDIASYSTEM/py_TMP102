@@ -11,4 +11,4 @@ t = tmp.TMP102()
 
 while True:
 	print t.getTemp()
-	time.sleep(0.5)
+	time.sleep(1)

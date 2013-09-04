@@ -15,7 +15,7 @@ class TMP102():
 	def getTemp(self):
 		msb = self.i2c.readU8(self.TMP102_ADDRESS)
 		lsb = self.i2c.readU8(self.TMP102_ADDRESS)
-		result = (((msb << 8 ) | lsb) >> 4)
+		result = 0.0625*(((msb << 8 ) | lsb) >> 4)
 		return result
 		# uh, this might be wrong. Might need to 
 		# read hi and lo bytes separately to see

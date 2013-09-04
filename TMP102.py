@@ -14,7 +14,9 @@ class TMP102():
 
 	def getTemp(self):
 		msb = self.i2c.readU8(self.TMP102_ADDRESS)
+		print 'msb is ' msb
 		lsb = self.i2c.readU8(self.TMP102_ADDRESS)
+		print 'lsb is ' lsb
 		result = 0.0625*(((msb << 8 ) | lsb) >> 4)
 		return result
 		# uh, this might be wrong. Might need to 
